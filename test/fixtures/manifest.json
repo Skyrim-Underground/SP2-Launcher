@@ -1,0 +1,22 @@
+{
+  "$comment": "SPDX-License-Identifier: AGPL-3.0-or-later",
+  "schemaVersion": 1,
+  "version": "2026.10.13-1",
+  "gameRuntime": "skyrimse-1.7.104",
+  "protocolId": "sug1_",
+  "runtime": {
+    "exe": "SkyrimSE.exe",
+    "files": [
+      { "path": "SkyrimSE.exe", "size": 38150800, "sha256": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef" },
+      { "path": "Data/Skyrim.esm", "size": 249752131, "sha256": "fedcba9876543210fedcba9876543210fedcba9876543210fedcba9876543210" }
+    ]
+  },
+  "launch": { "loader": "skse64_loader.exe" },
+  "origins": [ "https://files.example.org", "https://mods.example.org" ],
+  "files": [
+    { "to": "skse64_loader.exe", "size": 180224, "sha256": "1111111111111111111111111111111111111111111111111111111111111111", "native": true, "source": { "kind": "url", "url": "https://files.example.org/skse/2.3.1/skse64_loader.exe" } },
+    { "to": "Data/SKSE/Plugins/Example.dll", "size": 4210688, "sha256": "2222222222222222222222222222222222222222222222222222222222222222", "native": true, "source": { "kind": "url", "url": "https://files.example.org/example/1.0.0/Example.dll" } },
+    { "to": "Data/Example.esp", "size": 10240, "sha256": "3333333333333333333333333333333333333333333333333333333333333333", "native": false, "source": { "kind": "archive", "page": "https://mods.example.org/skyrimspecialedition/mods/1234?tab=files", "archiveSha256": "4444444444444444444444444444444444444444444444444444444444444444", "archiveSize": 20480, "entry": "Example.esp" } }
+  ],
+  "plugins": [ "Skyrim.esm", "Update.esm", "Dawnguard.esm", "Example.esp" ]
+}

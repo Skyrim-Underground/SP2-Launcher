@@ -1,0 +1,8 @@
+{
+  "$comment": "SPDX-License-Identifier: AGPL-3.0-or-later",
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "main",
+  "description": "The main window calls only the launcher's own commands, so no plugin or core permission is granted",
+  "windows": ["main"],
+  "permissions": []
+}

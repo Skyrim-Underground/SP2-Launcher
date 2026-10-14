@@ -1,0 +1,8 @@
+{
+  "$comment": "SPDX-License-Identifier: AGPL-3.0-or-later",
+  "schemaVersion": 1,
+  "servers": [
+    { "name": "Fixture One", "backendUrl": "https://one.example.org" },
+    { "name": "Fixture Two", "backendUrl": "https://two.example.org:8443" }
+  ]
+}

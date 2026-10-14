@@ -1,0 +1,143 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: AGPL-3.0-or-later -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Launcher</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <nav>
+      <button id="nav-servers" class="nav active" type="button" disabled>Servers</button>
+      <button id="nav-settings" class="nav" type="button" disabled>Settings</button>
+    </nav>
+    <span id="launcher-version" class="muted"></span>
+  </header>
+
+  <main>
+    <section id="screen-update" class="screen" hidden>
+      <h1>Updating the launcher</h1>
+      <p id="update-text"></p>
+      <progress id="update-bar" max="1"></progress>
+      <div class="row">
+        <button id="update-continue" type="button" hidden>Continue without updating</button>
+      </div>
+    </section>
+
+    <section id="screen-list" class="screen" hidden>
+      <div class="row between">
+        <h1>Servers</h1>
+        <div class="row">
+          <button id="refresh" type="button">Refresh</button>
+          <button id="add-server" type="button" class="primary">Add by URL</button>
+        </div>
+      </div>
+      <p id="update-notice" class="notice" hidden></p>
+      <p id="list-notice" class="notice" hidden></p>
+      <p id="list-error" class="error" hidden></p>
+      <ul id="server-list" class="servers"></ul>
+      <p id="list-empty" class="muted" hidden>No servers yet. Add one by URL.</p>
+      <footer class="links">
+        <button id="link-website" type="button" class="link">Website</button>
+        <button id="link-rules" type="button" class="link">Listing rules</button>
+      </footer>
+    </section>
+
+    <section id="screen-server" class="screen" hidden>
+      <button id="back" type="button" class="link">Back to servers</button>
+      <h1 id="server-name"></h1>
+      <p id="server-origin" class="muted"></p>
+      <p id="server-gate" class="notice" hidden></p>
+      <p id="server-error" class="error" hidden></p>
+      <dl id="server-details" hidden>
+        <dt>Description</dt>
+        <dd id="server-description"></dd>
+        <dt>Website</dt>
+        <dd><button id="server-website" type="button" class="link"></button></dd>
+        <dt>Discord</dt>
+        <dd><button id="server-invite" type="button" class="link"></button></dd>
+        <dt>Game runtime</dt>
+        <dd id="server-runtime"></dd>
+        <dt>Protocol</dt>
+        <dd id="server-protocol"></dd>
+      </dl>
+      <section id="server-account" hidden>
+        <h2>Account</h2>
+        <p id="account-summary"></p>
+        <div class="row">
+          <button id="signin" type="button" class="primary" hidden>Sign in with Discord</button>
+          <button id="signout" type="button" hidden>Sign out</button>
+          <button id="signin-cancel" type="button" class="danger" hidden>Cancel sign-in</button>
+        </div>
+        <p id="account-notice" class="notice" hidden></p>
+      </section>
+      <section id="server-install" hidden>
+        <h2>Files</h2>
+        <p id="install-summary"></p>
+        <p id="install-folder" class="muted"></p>
+        <p id="install-native-title" class="muted" hidden>Native code this server installs, and where each file comes from:</p>
+        <ul id="install-native" class="files"></ul>
+        <div class="row">
+          <button id="install-run" type="button" class="primary" hidden></button>
+          <button id="install-verify" type="button" hidden>Verify files</button>
+          <button id="install-cancel" type="button" class="danger" hidden>Cancel</button>
+        </div>
+        <div id="install-progress" hidden>
+          <p id="install-phase"></p>
+          <progress id="install-bar" max="1"></progress>
+        </div>
+        <p id="install-outcome" class="notice" hidden></p>
+      </section>
+      <section id="server-play" hidden>
+        <h2>Play</h2>
+        <div class="row">
+          <button id="play-run" type="button" class="primary" hidden>Play</button>
+          <button id="play-reconnect" type="button" hidden>Reconnect</button>
+        </div>
+        <p id="play-phase" class="notice" hidden></p>
+        <p id="play-notice" class="notice" hidden></p>
+      </section>
+      <div class="row">
+        <button id="remove-server" type="button" class="danger" hidden>Remove server</button>
+      </div>
+    </section>
+
+    <section id="screen-settings" class="screen" hidden>
+      <h1>Settings</h1>
+      <label for="base-folder">Base folder for game files</label>
+      <div class="row">
+        <input id="base-folder" type="text" spellcheck="false" placeholder="D:\Games">
+        <button id="save-base-folder" type="button" class="primary">Save</button>
+      </div>
+      <p class="muted">Each server gets its own game folder under this folder; it must not sit inside the Steam copy of the game or contain it.</p>
+      <p id="settings-default" class="muted"></p>
+      <p id="settings-message" class="notice" hidden></p>
+    </section>
+  </main>
+
+  <dialog id="add-dialog">
+    <form id="add-form">
+      <h2>Add a server by URL</h2>
+      <label for="add-url">Backend address (an https origin, nothing after the host)</label>
+      <input id="add-url" type="text" spellcheck="false" placeholder="https://api.example.org">
+      <p id="add-error" class="error" hidden></p>
+      <div id="add-preview" hidden>
+        <p><strong id="add-name"></strong></p>
+        <p id="add-description"></p>
+        <p class="muted"><span id="add-origin"></span></p>
+        <p class="muted"><span id="add-website"></span></p>
+        <p id="add-warning" class="warning"></p>
+      </div>
+      <div class="row end">
+        <button id="add-cancel" type="button">Cancel</button>
+        <button id="add-check" type="submit">Check</button>
+        <button id="add-confirm" type="button" class="primary" hidden>Add server</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "$comment": "SPDX-License-Identifier: AGPL-3.0-or-later",
+  "name": "sug-launcher",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A server browser that installs a server's files and starts the game",
+  "license": "AGPL-3.0-or-later",
+  "type": "module",
+  "scripts": {
+    "tauri": "tauri",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test \"test/**/*.test.mjs\""
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.12.2",
+    "typescript": "^7.0.0"
+  }
+}

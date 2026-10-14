@@ -1,0 +1,17 @@
+SPDX-License-Identifier: AGPL-3.0-or-later
+
+Skyrim Underground (SUG) - sug-launcher
+
+Code in this repository is licensed under the GNU Affero General Public License,
+version 3 or (at your option) any later version. The licence text is in LICENSE.
+
+The Rust crates listed in src-tauri/Cargo.lock are compiled into the launcher binary and keep
+their own licences. cargo stores each crate's licence text under %USERPROFILE%\.cargo\registry\src\
+after a build; a binary distribution must carry the licence texts of the crates it contains.
+The npm packages listed in package-lock.json are development tools (the Tauri CLI and TypeScript)
+and are not part of the launcher.
+
+The installer is built with NSIS, which the Tauri CLI downloads; NSIS is under the zlib licence.
+The launcher runs on the Microsoft Edge WebView2 Runtime installed on the player's PC.
+
+No Bethesda game files are included. Skyrim and related marks belong to their owners.
